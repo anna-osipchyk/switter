@@ -2,7 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+docs.pdf
+env
+.idea
 # C extensions
 *.so
 
