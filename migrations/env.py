@@ -2,18 +2,21 @@ import asyncio
 import os
 import sys
 from logging.config import fileConfig
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
-from sqlalchemy.engine import Connection
-from sqlalchemy.ext.asyncio import AsyncEngine
 
 from alembic import context
+from dotenv import load_dotenv
+
+# add your model's MetaData object here
+# for 'autogenerate' support
+from models.base import Base
+from sqlalchemy import engine_from_config, pool
+from sqlalchemy.engine import Connection
+from sqlalchemy.ext.asyncio import AsyncEngine
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
 sys.path = ["", ".."] + sys.path[1:]
-from dotenv import load_dotenv
 
 load_dotenv()
 config.set_main_option(
@@ -26,9 +29,6 @@ config.set_main_option(
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# add your model's MetaData object here
-# for 'autogenerate' support
-from models.base import Base
 
 target_metadata = Base.metadata
 
