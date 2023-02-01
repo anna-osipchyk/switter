@@ -1,4 +1,4 @@
-name: Python package
+name: CI
 
 on:
   push:
@@ -16,24 +16,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }} 🐍
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
+      - name: Install dependencies 📥
         run: |
              python -m pip install --upgrade pip
              pip install -r requirements.txt
-      - name: Lint with black
+      - name: Lint with black ⚫️
         run: |
               black --diff --check .
-      - name: Lint with isort
+      - name: Lint with isort ⚪️
         run: |
               isort --check-only .
 
-      - name: Lint with flake8
+      - name: Lint with flake8 🔎
         run: |
           flake8 .
-      - name: Test with pytest
+      - name: Test with pytest 🟣
         run: |
           pytest
