@@ -1,2 +1,2 @@
 # switter
-Social network powered by FastApi
+Social network powered by FastAPI
